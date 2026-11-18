@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build:vercel",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/((?!wasm/|manus-routes\\.json$).*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/wasm/(.*)\\.wasm",
+      "headers": [{ "key": "Content-Type", "value": "application/wasm" }]
+    }
+  ]
+}

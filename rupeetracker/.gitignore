@@ -1,0 +1,7 @@
+node_modules/
+dist/
+cpp/build-native/
+cpp/build-wasm/
+.emscripten_cache/
+*.log
+.DS_Store

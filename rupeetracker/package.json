@@ -1,0 +1,30 @@
+{
+  "name": "rupee-expense-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@10.9.9",
+  "scripts": {
+    "dev": "vite --config frontend/vite.config.js --host 0.0.0.0 --port 3000",
+    "build:wasm": "emcmake cmake -S cpp -B cpp/build-wasm -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF && cmake --build cpp/build-wasm --parallel",
+    "build:frontend": "vite build --config frontend/vite.config.js",
+    "build": "npm run build:wasm && npm run build:frontend",
+    "build:vercel": "node scripts/verify-wasm.mjs && npm run build:frontend",
+    "test:cpp": "cmake -S cpp -B cpp/build-native -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=ON && cmake --build cpp/build-native --parallel && ./cpp/build-native/finance_tests",
+    "preview": "vite preview --config frontend/vite.config.js --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "4.3.4",
+    "lucide-react": "0.468.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.28.1",
+    "recharts": "2.15.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.49",
+    "tailwindcss": "3.4.17",
+    "vite": "5.4.11"
+  }
+}
